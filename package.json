@@ -1,0 +1,10 @@
+{
+  "name": "foundryvtt-inline-webviewer",
+  "version": "1.0.0",
+  "description": "Allows circumventing x-frame-options within the Inline Webviewer module.",
+  "author": "ardittristan",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "@types/chrome": "0.0.132"
+  }
+}

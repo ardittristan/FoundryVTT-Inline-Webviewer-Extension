@@ -1,0 +1,51 @@
+name: build crx
+
+on:
+  push:
+    branches:
+    - master
+    paths:
+    - 'src/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Get Version
+      shell: bash
+      id: get-version
+      run: echo "::set-output name=version::$(node ./.github/workflows/get-version.js)"
+    - name: Pack Extension
+      uses: cardinalby/webext-buildtools-pack-extension-dir-action@v1
+      with:
+        extensionDir: 'src'
+        zipFilePath: 'build/FoundryVTT_Inline_Webviewer.zip'
+    - name: Build Extension
+      uses: cardinalby/webext-buildtools-chrome-crx-action@v2
+      with:
+        zipFilePath: 'build/FoundryVTT_Inline_Webviewer.zip'
+        crxFilePath: 'build/FoundryVTT_Inline_Webviewer.crx'
+        privateKey: ${{ secrets.CRX_KEY }}
+    - name: Create Latest Release
+      uses: ncipollo/release-action@v1
+      if: endsWith(github.ref, 'master')
+      with:
+        allowUpdates: true
+        name: Latest
+        draft: false
+        prerelease: false
+        token: ${{ secrets.GITHUB_TOKEN }}
+        artifacts: 'build/build/FoundryVTT_Inline_Webviewer.zip,build/FoundryVTT_Inline_Webviewer.crx'
+        tag: latest
+    - name: Create Release
+      uses: ncipollo/release-action@v1
+      with:
+        allowUpdates: true
+        name: Release ${{ steps.get-version.outputs.version }}
+        draft: false
+        prerelease: false
+        token: ${{ secrets.GITHUB_TOKEN }}
+        artifacts: 'build/build/FoundryVTT_Inline_Webviewer.zip,build/FoundryVTT_Inline_Webviewer.crx'
+        tag: ${{ steps.get-version.outputs.version }}
+

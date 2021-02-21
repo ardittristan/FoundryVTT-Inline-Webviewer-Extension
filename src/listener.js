@@ -1,0 +1,40 @@
+let filteredIframes = [];
+const observer = new MutationObserver(function () {
+  let newFilteredIframes = [];
+  document.querySelectorAll("iframe").forEach((el) => {
+    if (filteredIframes.includes(el.id)) {
+      if (!newFilteredIframes.includes(el.id)) {
+        newFilteredIframes.push(el.id);
+      }
+    } else {
+      filteredIframes.push(el.id);
+      newFilteredIframes.push(el.id);
+      let src = el.attributes.getNamedItem("fakesrc").value
+      console.log(src);
+      chrome.runtime.sendMessage({ frameSrc: src }, function() {document.getElementById(el.id).src = src});
+    }
+  });
+  filteredIframes = newFilteredIframes;
+});
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", start);
+} else {
+  start();
+}
+
+function start() {
+  console.log(window)
+  if (window.localStorage?.isFoundry === "true") {
+    chrome.runtime.sendMessage({ active: true })
+
+    let el = document.createElement("script");
+    el.innerHTML = "window.hasIframeCompatibility = true;";
+    document.head.appendChild(el);
+
+    observer.observe(document.body, {
+      subtree: true,
+      childList: true,
+    });
+  }
+}
