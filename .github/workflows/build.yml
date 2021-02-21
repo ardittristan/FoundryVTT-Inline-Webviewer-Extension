@@ -6,6 +6,7 @@ on:
     - master
     paths:
     - 'src/**'
+    - '.github/**'
 
 jobs:
   build:
@@ -36,7 +37,7 @@ jobs:
         draft: false
         prerelease: false
         token: ${{ secrets.GITHUB_TOKEN }}
-        artifacts: 'build/build/FoundryVTT_Inline_Webviewer.zip,build/FoundryVTT_Inline_Webviewer.crx'
+        artifacts: 'build/FoundryVTT_Inline_Webviewer.zip,build/FoundryVTT_Inline_Webviewer.crx'
         tag: latest
     - name: Create Release
       uses: ncipollo/release-action@v1
@@ -46,6 +47,6 @@ jobs:
         draft: false
         prerelease: false
         token: ${{ secrets.GITHUB_TOKEN }}
-        artifacts: 'build/build/FoundryVTT_Inline_Webviewer.zip,build/FoundryVTT_Inline_Webviewer.crx'
+        artifacts: 'build/FoundryVTT_Inline_Webviewer.zip,build/FoundryVTT_Inline_Webviewer.crx'
         tag: ${{ steps.get-version.outputs.version }}
 
