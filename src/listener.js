@@ -29,7 +29,10 @@ function start() {
     chrome.runtime.sendMessage({ active: true })
 
     let el = document.createElement("script");
-    el.innerHTML = "window.hasIframeCompatibility = true;";
+    el.innerHTML = `
+window.hasIframeCompatibility = true;
+window.inlineWebviewerExtensionVersion = ${chrome.runtime.getManifest().version}
+`;
     document.head.appendChild(el);
 
     observer.observe(document.body, {
