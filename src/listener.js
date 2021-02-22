@@ -34,7 +34,7 @@ function start() {
     let el = document.createElement("script");
     el.innerHTML = `
 window.hasIframeCompatibility = true;
-window.inlineWebviewerExtensionVersion = ${chrome.runtime.getManifest().version}
+window.inlineWebviewerExtensionVersion = "${chrome.runtime.getManifest().version}";
 `;
     document.head.appendChild(el);
 
