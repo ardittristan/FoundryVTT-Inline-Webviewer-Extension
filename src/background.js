@@ -1,5 +1,5 @@
 chrome.runtime.onMessage.addListener(function (message, _sender, sendResponse) {
-  console.log(message)
+  console.log(message);
   if (message.frameSrc) {
     /** @type {String} */
     let src = message.frameSrc;

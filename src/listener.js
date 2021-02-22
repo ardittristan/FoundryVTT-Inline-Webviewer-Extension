@@ -9,9 +9,13 @@ const observer = new MutationObserver(function () {
     } else {
       filteredIframes.push(el.id);
       newFilteredIframes.push(el.id);
-      let src = el.attributes.getNamedItem("fakesrc").value
-      console.log(src);
-      chrome.runtime.sendMessage({ frameSrc: src }, function() {document.getElementById(el.id).src = src});
+      let src = el.attributes.getNamedItem("fakesrc")?.value;
+      if (src?.length > 0) {
+        console.log(src);
+        chrome.runtime.sendMessage({ frameSrc: src }, function () {
+          document.getElementById(el.id).src = src;
+        });
+      }
     }
   });
   filteredIframes = newFilteredIframes;
@@ -24,9 +28,8 @@ if (document.readyState === "loading") {
 }
 
 function start() {
-  console.log(window)
   if (window.localStorage?.isFoundry === "true") {
-    chrome.runtime.sendMessage({ active: true })
+    chrome.runtime.sendMessage({ active: true });
 
     let el = document.createElement("script");
     el.innerHTML = `
