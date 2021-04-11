@@ -5,6 +5,6 @@
   "author": "ardittristan",
   "license": "GPL-3.0",
   "devDependencies": {
-    "@types/chrome": "0.0.132"
+    "@types/chrome": "0.0.134"
   }
 }

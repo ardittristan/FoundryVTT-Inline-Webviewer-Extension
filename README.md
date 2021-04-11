@@ -10,13 +10,38 @@ It does the following:
 
 Note, that when cookies within this iframe are required, the iframe content has to be HTTPS, otherwise cookies will not be set.
 
+## Special websites
+
+<details open>
+
+| Site                        | Login Issues                                | Third Party Login Issues   | Other Issues |
+| --------------------------- | ------------------------------------------- | -------------------------- | ------------ |
+| <https://www.dndbeyond.com> | Requires devtools to be open when logged in |                            |              |
+| <https://www.notion.so>     | Requires devtools to be open when logged in | Google login does not work |              |
+
+<details open>
+
+  <summary>Help! A website that isn't in the list isn't functioning!</summary>
+
+#### Here's a few things you can try
+
+1. Try using a different login method.
+2. Try logging in with devtools open.
+3. Try logging in in a different tab and check if you're logged in in the webview.
+4. Try figuring out what cookie stores the login data and add it's name and site to the [brokenCookies.json](https://github.com/ardittristan/FoundryVTT-Inline-Webviewer-Extension/blob/master/api/brokenCookies.json) file in a pull request.
+5. If you don't know how to do 4, make an issue with the affected site.
+
+  </details>
+
+</details>
+
 ## Installation
 
 ### Method 1
 
 1. Download the crx file from the [Releases](/releases) tab.
 
-2. Go to [chrome://extensions](chrome://extensions) in your browser.
+2. Go to <chrome://extensions> in your browser.
 
 3. Enable Developer mode (usually top right).
 
@@ -30,7 +55,7 @@ Note, that when cookies within this iframe are required, the iframe content has 
 
 2. Unzip the file to a folder somewhere (this folder will be permanent, so don't remove it after installing).
 
-3. Go to [chrome://extensions](chrome://extensions) in your browser.
+3. Go to <chrome://extensions> in your browser.
 
 4. Enable Developer mode (usually top right).
 

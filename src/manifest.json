@@ -11,11 +11,12 @@
   "description": "Allows circumventing x-frame-options within the Inline Webviewer module.",
   "manifest_version": 2,
   "name": "FoundryVTT Inline Webviewer",
-  "permissions": ["webRequest", "webRequestBlocking", "<all_urls>", "browsingData"],
+  "permissions": ["webRequest", "webRequestBlocking", "<all_urls>", "browsingData", "cookies"],
   "homepage_url": "https://github.com/ardittristan/FoundryVTT-Inline-Webviewer-Extension",
+  "devtools_page": "devtool.html",
   "icons": {
     "48": "icon.png",
     "96": "icon.png"
   },
-  "version": "1.0.3"
+  "version": "1.1.0"
 }
