@@ -19,7 +19,7 @@ Note, that when cookies within this iframe are required, the iframe content has 
 | <https://www.dndbeyond.com> | Requires devtools to be open when logged in |                            |              |
 | <https://www.notion.so>     | Requires devtools to be open when logged in | Google login does not work |              |
 
-<details open>
+<details>
 
   <summary>Help! A website that isn't in the list isn't functioning!</summary>
 
