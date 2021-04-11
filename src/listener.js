@@ -28,19 +28,21 @@ if (document.readyState === "loading") {
 }
 
 function start() {
-  if (window.localStorage?.isFoundry === "true") {
-    chrome.runtime.sendMessage({ active: true });
+  try {
+    if (window.localStorage?.isFoundry === "true") {
+      chrome.runtime.sendMessage({ active: true });
 
-    let el = document.createElement("script");
-    el.innerHTML = `
+      let el = document.createElement("script");
+      el.innerHTML = `
 window.hasIframeCompatibility = true;
 window.inlineWebviewerExtensionVersion = "${chrome.runtime.getManifest().version}";
 `;
-    document.head.appendChild(el);
+      document.head.appendChild(el);
 
-    observer.observe(document.body, {
-      subtree: true,
-      childList: true,
-    });
-  }
+      observer.observe(document.body, {
+        subtree: true,
+        childList: true,
+      });
+    }
+  } catch {}
 }
