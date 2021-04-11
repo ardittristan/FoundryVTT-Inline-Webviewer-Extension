@@ -1,4 +1,7 @@
 [
   ["sib_cuid", ".www.dndbeyond.com"],
-  ["CobaltSession", ".dndbeyond.com"]
+  ["CobaltSession", ".dndbeyond.com"],
+  ["token_v2", "www.notion.so"],
+  ["notion_user_id", "www.notion.so"],
+  ["notion_users", "222.notion.so"]
 ]
