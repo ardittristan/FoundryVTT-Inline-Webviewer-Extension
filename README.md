@@ -39,7 +39,7 @@ Note, that when cookies within this iframe are required, the iframe content has 
 
 ### Method 1
 
-1. Download the crx file from the [Releases](/releases) tab.
+1. Download the crx file from the [Releases](https://github.com/ardittristan/FoundryVTT-Inline-Webviewer-Extension/releases) tab.
 
 2. Go to <chrome://extensions> in your browser.
 
@@ -51,7 +51,7 @@ Note, that when cookies within this iframe are required, the iframe content has 
 
 ### Method 2
 
-1. Download the zip file from the [Releases](/releases) tab.
+1. Download the zip file from the [Releases](https://github.com/ardittristan/FoundryVTT-Inline-Webviewer-Extension/releases) tab.
 
 2. Unzip the file to a folder somewhere (this folder will be permanent, so don't remove it after installing).
 
